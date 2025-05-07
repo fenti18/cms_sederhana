@@ -38,7 +38,7 @@ $recent_posts = $stmt->fetchAll();
 </div>
 
 <!-- Main content -->
-<section class="content">
+<section class="content dashboard-bg">
     <div class="container-fluid">
         <!-- Info boxes -->
         <div class="row">
@@ -171,10 +171,23 @@ $recent_posts = $stmt->fetchAll();
 </section>
 
 <style>
+:root {
+    --pastel-green: #98D8AA;
+    --light-cream: #F7E1D7;
+    --soft-green: #A8E6CF;
+    --warm-cream: #FFD3B6;
+    --dark-green: #4A8B6F;
+}
+
+body, .dashboard-bg {
+    background: linear-gradient(135deg, var(--pastel-green), var(--soft-green));
+    min-height: 100vh;
+}
+
 .info-box {
     box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
-    border-radius: 0.25rem;
-    background-color: #fff;
+    border-radius: 0.5rem;
+    background-color: rgba(255,255,255,0.85);
     display: flex;
     margin-bottom: 1rem;
     min-height: 80px;
@@ -182,22 +195,25 @@ $recent_posts = $stmt->fetchAll();
     position: relative;
     width: 100%;
     transition: all 0.3s ease;
+    border: 1px solid var(--pastel-green);
 }
 
 .info-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    box-shadow: 0 4px 16px rgba(152,216,170,0.15);
 }
 
 .info-box-icon {
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     align-items: center;
     display: flex;
-    font-size: 1.875rem;
+    font-size: 2rem;
     justify-content: center;
     text-align: center;
     width: 70px;
     color: #fff;
+    background: linear-gradient(135deg, var(--pastel-green), var(--dark-green));
+    box-shadow: 0 2px 8px rgba(152,216,170,0.15);
 }
 
 .info-box-content {
@@ -210,16 +226,12 @@ $recent_posts = $stmt->fetchAll();
 }
 
 .info-box-text {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 0.875rem;
-    color: #6c757d;
+    font-size: 1rem;
+    color: var(--dark-green);
+    font-weight: 600;
 }
 
 .info-box-number {
-    display: block;
     font-weight: 700;
     font-size: 1.5rem;
     color: #343a40;
@@ -229,26 +241,21 @@ $recent_posts = $stmt->fetchAll();
     box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
     margin-bottom: 1rem;
     transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    border-radius: 0.5rem;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--light-cream);
 }
 
 .card-header {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(0,0,0,.125);
-    padding: 0.75rem 1.25rem;
-    position: relative;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+    background: var(--light-cream);
+    border-bottom: 1px solid var(--pastel-green);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
 
 .card-title {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #343a40;
+    color: var(--dark-green);
+    font-weight: 600;
 }
 
 .table {
@@ -262,27 +269,53 @@ $recent_posts = $stmt->fetchAll();
 }
 
 .table-hover tbody tr:hover {
-    background-color: rgba(0,0,0,.075);
+    background-color: var(--soft-green);
 }
 
-.badge {
-    padding: 0.4em 0.6em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
+.badge-success {
+    background: var(--pastel-green);
+    color: var(--dark-green);
 }
 
-.btn {
-    transition: all 0.3s ease;
+.badge-warning {
+    background: var(--warm-cream);
+    color: var(--dark-green);
 }
 
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+.btn-primary, .btn-success, .btn-warning, .btn-info {
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--dark-green);
+    color: #fff;
+}
+.btn-primary:hover {
+    background: #3a7a5f;
+}
+.btn-success {
+    background: var(--pastel-green);
+    color: var(--dark-green);
+}
+.btn-success:hover {
+    background: #b6eac7;
+}
+.btn-warning {
+    background: var(--warm-cream);
+    color: var(--dark-green);
+}
+.btn-warning:hover {
+    background: #ffe2c2;
+}
+.btn-info {
+    background: var(--soft-green);
+    color: var(--dark-green);
+}
+.btn-info:hover {
+    background: #b6eac7;
 }
 
 .quick-actions .btn {
